@@ -3,14 +3,19 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  //specify Node environment
+  // tell running environment which version to use
   "engines": {
     "node": "8.1.1",
     "npm": "5.0.3"
   },
+  //spefify start script--for Heroku
   "scripts": {
     "start": "node index.js",
+    // nodemon is to restart the server automatically every time I edited
     "server": "nodemon index.js",
     "client": "npm run start --prefix client",
+    // dev is developing mode
     "dev": "concurrently \"npm run server\" \"npm run client\" \"npm run webhook\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
     "webhook": "./sendgrid_webhook.sh"
