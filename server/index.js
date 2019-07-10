@@ -1,28 +1,40 @@
+/**
+
+It is the start file of whole project
+
+*/
+
 //import
 const express = require('express');
 const mongoose = require('mongoose');
-const cookieSession = require('cookie-session');
-const passport = require('passport');
+const cookieSession = require('cookie-session'); // import cookie lib
+const passport = require('passport');  // make passport enable cookie
 const bodyParser = require('body-parser');
 const keys = require('./config/keys');
 // make sure codes inside these js files be excuted
+// we need to first require Users and Surveys of models before passport
+// becasue passport used the two schema
 require('./models/User');
 require('./models/Survey');
 require('./services/passport');
 
 mongoose.Promise = global.Promise;
+// wired MongoDB with my server
 mongoose.connect(keys.mongoURI);
-// app use express
-// create an express object called app
+// create an express object called app which use express
 const app = express();
 
 app.use(bodyParser.json());
+
+// middlewares: used to modify incoming request to app before they are sent off to route handlers
 app.use(
   cookieSession({
-    maxAge: 30 * 24 * 60 * 60 * 1000,
+    maxAge: 30 * 24 * 60 * 60 * 1000, // 30days, passed in as ms
     keys: [keys.cookieKey]
   })
 );
+
+// these two functions are used to tell passport to use cookie to handle authentication
 app.use(passport.initialize());
 app.use(passport.session());
 
