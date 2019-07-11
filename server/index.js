@@ -60,5 +60,6 @@ if (process.env.NODE_ENV === 'production') {
 }
 // dynamic port binding
 // define a specific port or depends on the running environment
+// Heroku would set environment variables automatically
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);

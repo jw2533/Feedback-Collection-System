@@ -40,6 +40,7 @@ passport.use(
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
       callbackURL: '/auth/google/callback',  //this is for where the users are redirected to after they grant permissions
+      // make GoogleStrategy to trust ant proxy(in this project it is the Heroku proxy)
       proxy: true
     },
     // callback function, process all information we got from google after trading with code
