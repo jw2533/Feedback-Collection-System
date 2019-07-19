@@ -14,8 +14,9 @@
     "start": "node index.js",
     // nodemon is to restart the server automatically every time I edited
     "server": "nodemon index.js",
-    "client": "npm run start --prefix client",
+    "client": "npm run start --prefix client", // execute "npm run start" within "client" directory
     // dev is developing mode
+    // /" is used with " " to represent "
     "dev": "concurrently \"npm run server\" \"npm run client\" \"npm run webhook\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
     "webhook": "./sendgrid_webhook.sh"

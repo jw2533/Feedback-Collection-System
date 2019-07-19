@@ -46,8 +46,12 @@ passport.use(
     // callback function, process all information we got from google after trading with code
     // access token : certificate to tell google we already got permission to these info
     // refresh token: refresh access token after the old one expired
+
+    // Async/Await  used to process any asynchronous opreation
     async (accessToken, refreshToken, profile, done) => {
       // findOne--a query, find the first record inside the collection
+      // Async/Await  used to process any asynchronous opreation
+      // put await in front of some promises and assign to a viarable 
       const existingUser = await User.findOne({ googleId: profile.id });
 
       if (existingUser) {

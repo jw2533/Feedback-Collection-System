@@ -2,6 +2,10 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  // By using proxy, make client and server work together smoothly
+  // the way to use Proxy has changed for Create React App 2.0 & 3.0
+  // this is the way Creat React App 1.0 uses
+  // only used in dev mode
   "proxy": {
     "/auth/google": {
       "target": "http://localhost:5000"
